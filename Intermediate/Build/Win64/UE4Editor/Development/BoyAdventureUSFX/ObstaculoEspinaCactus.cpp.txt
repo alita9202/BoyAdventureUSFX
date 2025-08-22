@@ -1,0 +1,5 @@
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Development\BoyAdventureUSFX\Definitions.BoyAdventureUSFX.h
+D:\SIS457\BoyAdventureUSFX1\Source\BoyAdventureUSFX\ObstaculoEspinaCactus.h
+D:\SIS457\BoyAdventureUSFX1\Source\BoyAdventureUSFX\ObstaculoEspina.h
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Inc\BoyAdventureUSFX\ObstaculoEspina.generated.h
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Inc\BoyAdventureUSFX\ObstaculoEspinaCactus.generated.h

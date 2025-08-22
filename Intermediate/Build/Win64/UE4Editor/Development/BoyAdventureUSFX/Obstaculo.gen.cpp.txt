@@ -1,0 +1,5 @@
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Development\BoyAdventureUSFX\Definitions.BoyAdventureUSFX.h
+D:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+D:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+D:\SIS457\BoyAdventureUSFX1\Source\BoyAdventureUSFX/Obstaculo.h
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Inc\BoyAdventureUSFX\Obstaculo.generated.h
