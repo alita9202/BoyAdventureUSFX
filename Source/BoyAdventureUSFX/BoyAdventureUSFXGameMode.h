@@ -5,9 +5,12 @@
 #include "BoyAdventureUSFXGameMode.generated.h"
 
 
+class AObstaculo;
 class AObstaculoPared;
 class AParedMetal;
-class AObstaculoEspina;  
+class ATrampaSierra;
+class AObstaculoEspina;
+class AObstaculoPiso;
 
 UCLASS(minimalapi)
 class ABoyAdventureUSFXGameMode : public AGameModeBase
@@ -19,15 +22,21 @@ public:
 
 	// Función para mover los actores
 	void MoverActorAleatoriamente();
+	TArray<AObstaculo*> aObstaculos;
 
 public:
 	virtual void BeginPlay() override;
+	void CrearObstaculos();
+	void CrearGradas(FVector PuntoInicial, int32 CantidadEscalones, float Espaciado, float AlturaEscalon);
 
 private:
-	// Actores de obstáculos
 	AObstaculoPared* Obstaculo;
 	AParedMetal* ParedMetal01;
-	AObstaculoEspina* ObstaculoEspina;  
+	AObstaculo* ObstaculoEspina;
+
+	ATrampaSierra* ts01;
+	ATrampaSierra* ts02;
+
 
 private:
 	// Timer para movimiento
@@ -39,6 +48,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Movimiento")
 	FVector RangoMovimiento = FVector(500.0f, 500.0f, 0.0f); 
+
 };
 
 

@@ -250,7 +250,7 @@ void EmptyLinkFunctionForGeneratedCodePisoLento() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APisoLento, 819135085);
+	IMPLEMENT_CLASS(APisoLento, 1690905019);
 	template<> BOYADVENTUREUSFX_API UClass* StaticClass<APisoLento>()
 	{
 		return APisoLento::StaticClass();

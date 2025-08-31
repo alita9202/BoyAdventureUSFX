@@ -21,4 +21,28 @@ public:
 
 	virtual void Activarse() override;
 
+protected:
+    virtual void BeginPlay() override;
+
+public:
+    virtual void Tick(float DeltaTime) override;
+
+    // --- Configuración de movimiento ---
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    bool bMoverEnZ = false;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    bool bMoverEnY = false;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    float Amplitud = 100.f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    float Velocidad = 2.f;
+
+private:
+    UPROPERTY(VisibleAnywhere)
+    UStaticMeshComponent* MeshObstaculo;
+
+    FVector PosicionInicial;
 };

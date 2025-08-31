@@ -58,7 +58,10 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AObstaculoPiso)
 
 
-#define BoyAdventureUSFX1_Source_BoyAdventureUSFX_ObstaculoPiso_h_15_PRIVATE_PROPERTY_OFFSET
+#define BoyAdventureUSFX1_Source_BoyAdventureUSFX_ObstaculoPiso_h_15_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__MeshObstaculo() { return STRUCT_OFFSET(AObstaculoPiso, MeshObstaculo); }
+
+
 #define BoyAdventureUSFX1_Source_BoyAdventureUSFX_ObstaculoPiso_h_12_PROLOG
 #define BoyAdventureUSFX1_Source_BoyAdventureUSFX_ObstaculoPiso_h_15_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \

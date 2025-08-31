@@ -6,6 +6,9 @@
 #include "ObstaculoPared.h"
 #include "ObstaculoEspina.h"
 #include "ParedMetal.h"
+#include "Obstaculo.h"
+#include "ObstaculoPiso.h"
+
 
 ABoyAdventureUSFXGameMode::ABoyAdventureUSFXGameMode()
 {
@@ -24,9 +27,17 @@ void ABoyAdventureUSFXGameMode::BeginPlay()
     UWorld* Mundo = GetWorld();
     if (Mundo)
     {
+        CrearObstaculos();
+
+
         // Define la ubicación y rotación del obstáculo
         FVector Ubicacion(0.0f, 0.0f, 400.0f); // Ajusta según tu escena
         FRotator Rotacion(0.0f, 0.0f, 0.0f);
+
+        // Crear gradas en la posición que yo elija
+        FVector PuntoDeInicio(-560.f, 840.f, 140.f);
+        CrearGradas(PuntoDeInicio, 10, 110.f, 60.f);
+
 
         // Spawnea el actor
         FActorSpawnParameters ParametrosSpawn;
@@ -35,21 +46,6 @@ void ABoyAdventureUSFXGameMode::BeginPlay()
 
         Obstaculo = Mundo->SpawnActor<AObstaculoPared>(AObstaculoPared::StaticClass(), Ubicacion, Rotacion, ParametrosSpawn);
 
-        if (Obstaculo)
-        {
-         
-            UE_LOG(LogTemp, Warning, TEXT("Obstáculo creado exitosamente"));
-        }
-
-        FVector UbicacionEspina(-399.751465f, 0.0f, 130.277084f);
-        FRotator RotacionEspina(0.0f, 0.0f, 0.0f);
-
-        ObstaculoEspina = Mundo->SpawnActor<AObstaculoEspina>(AObstaculoEspina::StaticClass(), UbicacionEspina, RotacionEspina, ParametrosSpawn);
-
-        if (ObstaculoEspina)
-        {
-            UE_LOG(LogTemp, Warning, TEXT("Obstáculo Espina creado exitosamente"));
-        }
 
         // Define la ubicación y rotación del obstáculo
         FVector Ubicacion01(200.0f, -300.0f, 400.0f); // Ajusta según tu escena
@@ -66,6 +62,85 @@ void ABoyAdventureUSFXGameMode::BeginPlay()
     true
     );
 }
+
+void ABoyAdventureUSFXGameMode::CrearObstaculos()
+{
+    FVector PosicionInicial(-200.f, 200.f, 300.f); // Altura inicial
+    float Espaciado = 150.f;
+
+    // Obstáculos en X
+    for (int32 i = 0; i < 15; ++i)
+    {
+        FVector SpawnLocation = PosicionInicial + FVector(i * Espaciado, 0.f, 0.f);
+        FRotator SpawnRotation = FRotator::ZeroRotator;
+
+        AObstaculo* NuevoObstaculo = GetWorld()->SpawnActor<AObstaculo>(
+            AObstaculo::StaticClass(),
+            SpawnLocation,
+            SpawnRotation
+        );
+        if (NuevoObstaculo)
+        {
+            aObstaculos.Add(NuevoObstaculo);
+        }
+    }
+
+    /*
+    // Paredes en Y
+    for (int32 i = 0; i < 25; ++i)
+    {
+        FVector SpawnLocation = PosicionInicial + FVector(0.f, i * Espaciado, 0.f);
+        FRotator SpawnRotation = FRotator::ZeroRotator;
+
+        AParedMetal* NuevaParedMetal = GetWorld()->SpawnActor<AParedMetal>(
+            AParedMetal::StaticClass(),
+            SpawnLocation,
+            SpawnRotation
+        );
+        if (NuevaParedMetal)
+        {
+            aObstaculos.Add(NuevaParedMetal);
+        }
+    }*/
+
+}
+
+void ABoyAdventureUSFXGameMode::CrearGradas(FVector PuntoInicial, int32 CantidadEscalones, float Espaciado, float AlturaEscalon)
+{
+    for (int32 i = 0; i < CantidadEscalones; ++i)
+    {
+        FVector SpawnLocation = PuntoInicial + FVector(i * Espaciado, 0.f, i * AlturaEscalon);
+        FRotator SpawnRotation = FRotator::ZeroRotator;
+
+        AObstaculoPiso* NuevoEscalon = GetWorld()->SpawnActor<AObstaculoPiso>(
+            AObstaculoPiso::StaticClass(),
+            SpawnLocation,
+            SpawnRotation
+        );
+
+        if (NuevoEscalon)
+        {
+            aObstaculos.Add(NuevoEscalon);
+
+            // --- Personalizar movimientos ---
+            if (i == 3) // 4to escalón sube y baja
+            {
+                NuevoEscalon->bMoverEnZ = true;
+                NuevoEscalon->Amplitud = 150.f;
+                NuevoEscalon->Velocidad = 2.f;
+            }
+            else if (i == 6) // 7mo escalón se mueve izquierda/derecha
+            {
+                NuevoEscalon->bMoverEnY = true;
+                NuevoEscalon->Amplitud = 200.f;
+                NuevoEscalon->Velocidad = 1.5f;
+            }
+        }
+    }
+}
+
+
+
 
 void ABoyAdventureUSFXGameMode::MoverActorAleatoriamente()  
 {  

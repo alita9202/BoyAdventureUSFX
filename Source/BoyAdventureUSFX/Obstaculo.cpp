@@ -30,7 +30,7 @@ AObstaculo::AObstaculo()
 void AObstaculo::Activarse()
 {
 	//NO HACENADAPORQUE ES UN METODO EN LA CLASE PADRE BASE
-
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Obstaculo activado"));
 
 }
 
