@@ -8,10 +8,11 @@
 #include "ParedMetal.h"
 #include "Obstaculo.h"
 #include "ObstaculoPiso.h"
-
+#include "Plataforma.h"
 
 ABoyAdventureUSFXGameMode::ABoyAdventureUSFXGameMode()
 {
+    //PrimaryActorTick.bCanEverTick = true;
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter"));
 	if (PlayerPawnBPClass.Class != NULL)
@@ -29,6 +30,19 @@ void ABoyAdventureUSFXGameMode::BeginPlay()
     {
         CrearObstaculos();
 
+        Plataforma01 = Mundo->SpawnActor<APlataforma>(APlataforma::StaticClass());
+        if (Plataforma01)
+        {
+            Plataforma01->setNumeroPisos(4);
+            Plataforma01->setNumeroComponentesPorPiso(10);
+            Plataforma01->setAlturaEntrePisos(150.f);
+            Plataforma01->setAlturaComponente(20.f);
+            Plataforma01->setAnchoComponente(200.f);
+            Plataforma01->setProfundidadComponente(100.f);
+            Plataforma01->setSeparacionComponentes(50.f);
+            Plataforma01->setPosicionInicial(FVector(-700.f, -300.f, 350.f));
+            Plataforma01->generarPlataforma();
+        }
 
         // Define la ubicación y rotación del obstáculo
         FVector Ubicacion(0.0f, 0.0f, 400.0f); // Ajusta según tu escena
@@ -61,6 +75,16 @@ void ABoyAdventureUSFXGameMode::BeginPlay()
     Intervalo,
     true
     );
+
+    for (int32 i = 25; i < aObstaculos.Num(); ++i)
+    {
+        if (aObstaculos[i])
+        {
+            aObstaculos[i]->Desactivarse();
+        }
+    }
+
+    aObstaculos[17]->Desactivarse();
 }
 
 void ABoyAdventureUSFXGameMode::CrearObstaculos()
@@ -69,7 +93,7 @@ void ABoyAdventureUSFXGameMode::CrearObstaculos()
     float Espaciado = 150.f;
 
     // Obstáculos en X
-    for (int32 i = 0; i < 15; ++i)
+    for (int32 i = 0; i < 10; ++i)
     {
         FVector SpawnLocation = PosicionInicial + FVector(i * Espaciado, 0.f, 0.f);
         FRotator SpawnRotation = FRotator::ZeroRotator;
@@ -85,23 +109,18 @@ void ABoyAdventureUSFXGameMode::CrearObstaculos()
         }
     }
 
-    /*
-    // Paredes en Y
+    PosicionInicial = FVector(-200.f, -600.f, 300.f); // Altura inicial
     for (int32 i = 0; i < 25; ++i)
     {
         FVector SpawnLocation = PosicionInicial + FVector(0.f, i * Espaciado, 0.f);
         FRotator SpawnRotation = FRotator::ZeroRotator;
 
-        AParedMetal* NuevaParedMetal = GetWorld()->SpawnActor<AParedMetal>(
-            AParedMetal::StaticClass(),
-            SpawnLocation,
-            SpawnRotation
-        );
+        AObstaculo* NuevaParedMetal = GetWorld()->SpawnActor<AParedMetal>(AParedMetal::StaticClass(), SpawnLocation, SpawnRotation);
         if (NuevaParedMetal)
         {
             aObstaculos.Add(NuevaParedMetal);
         }
-    }*/
+    }
 
 }
 
@@ -136,6 +155,14 @@ void ABoyAdventureUSFXGameMode::CrearGradas(FVector PuntoInicial, int32 Cantidad
                 NuevoEscalon->Velocidad = 1.5f;
             }
         }
+    }
+}
+
+void ABoyAdventureUSFXGameMode::EliminarComponentePlataforma()
+{
+    if (Plataforma01)
+    {
+        Plataforma01->EliminarComponenteAleatorio();
     }
 }
 

@@ -1,0 +1,3 @@
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Development\BoyAdventureUSFX\Definitions.BoyAdventureUSFX.h
+D:\SIS457\BoyAdventureUSFX1\Source\BoyAdventureUSFX\ComponentePlataforma.h
+D:\SIS457\BoyAdventureUSFX1\Intermediate\Build\Win64\UE4Editor\Inc\BoyAdventureUSFX\ComponentePlataforma.generated.h

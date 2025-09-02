@@ -21,27 +21,28 @@ class BOYADVENTUREUSFX_API AObstaculoPared : public AObstaculo
 //	}
 	
 
-private:
-	bool Activo;
-	bool AbiertoCompletamente;
-	float DesplazamientoPuerta;
-	float LimiteDesplazamientoPuerta;
+	private:
+		bool Activo;
+		bool AbiertoCompletamente;
+		float DesplazamientoPuerta;
+		float LimiteDesplazamientoPuerta;
 
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	protected:
+		// Called when the game starts or when spawned
+		virtual void BeginPlay() override;
 
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	public:
+		// Called every frame
+		virtual void Tick(float DeltaTime) override;
 
-	AObstaculoPared();
+		AObstaculoPared();
 
-public:
-	FString Estilo;
-	FString Material;
+	public:
+		FString Estilo;
+		FString Material;
 
-	virtual void Activarse() override;
+		virtual void Activarse() override;
+		virtual void Desactivarse() override;
 
 };

@@ -50,6 +50,12 @@ void AParedMetal::Activarse()
     }
 
 }
+
+void AParedMetal::Desactivarse()
+{
+	Activo = false;
+}
+
 void AParedMetal::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);

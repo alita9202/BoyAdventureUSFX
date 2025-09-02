@@ -61,6 +61,11 @@ void AObstaculoPared::Activarse()
     }
 }
 
+void AObstaculoPared::Desactivarse() 
+{
+	Activo = false;
+}
+
 void AObstaculoPared::BeginPlay()
 {
     Super::BeginPlay();

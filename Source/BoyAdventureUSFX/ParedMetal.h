@@ -22,6 +22,8 @@ public:
 	AParedMetal();
 
 	virtual void Activarse() override;
+	virtual void Desactivarse() override;
+
 	virtual void BeginPlay() override
 	{
 		Super::BeginPlay();

@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\BoyAdventureUSFX.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{0D03236E-9FAD-4C3F-8E53-0205151C6BC5}</UniqueIdentifier>
+      <UniqueIdentifier>{75A5952B-471F-4CAF-82FE-5380FA3B064E}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\BoyAdventureUSFX.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{882DBB24-13FD-4E89-954E-5DB100423249}</UniqueIdentifier>
+      <UniqueIdentifier>{88F84839-298E-4D8C-AA98-8B27C0741645}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\BoyAdventureUSFX">
-      <UniqueIdentifier>{2E6A1ADB-A1D5-4F88-B618-D0FD067D6C0B}</UniqueIdentifier>
+      <UniqueIdentifier>{4D7D6C91-47F3-4399-939D-80D61AB975A7}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\BoyAdventureUSFX\Amigo.cpp">
       <Filter>Source\BoyAdventureUSFX</Filter>
@@ -59,6 +59,12 @@
       <Filter>Source\BoyAdventureUSFX</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\BoyAdventureUSFX\BoyAdventureUSFXGameMode.h">
+      <Filter>Source\BoyAdventureUSFX</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BoyAdventureUSFX\ComponentePlataforma.cpp">
+      <Filter>Source\BoyAdventureUSFX</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BoyAdventureUSFX\ComponentePlataforma.h">
       <Filter>Source\BoyAdventureUSFX</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\BoyAdventureUSFX\Enemigo.cpp">
@@ -119,6 +125,12 @@
       <Filter>Source\BoyAdventureUSFX</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\BoyAdventureUSFX\PisoLento.h">
+      <Filter>Source\BoyAdventureUSFX</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BoyAdventureUSFX\Plataforma.cpp">
+      <Filter>Source\BoyAdventureUSFX</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BoyAdventureUSFX\Plataforma.h">
       <Filter>Source\BoyAdventureUSFX</Filter>
     </ClInclude>
   </ItemGroup>

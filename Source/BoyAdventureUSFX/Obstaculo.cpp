@@ -34,6 +34,12 @@ void AObstaculo::Activarse()
 
 }
 
+void AObstaculo::Desactivarse()
+{
+	//NO HACENADAPORQUE ES UN METODO EN LA CLASE PADRE BASE
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Obstaculo desactivado"));
+}
+
 // Called when the game starts or when spawned
 void AObstaculo::BeginPlay()
 {
